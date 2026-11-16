@@ -1,0 +1,10 @@
+// Обчислення факторіалу N! -> RES
+begin
+    RES := 1;
+    I := 1;
+    while I <= N do
+    begin
+        RES := RES * I;
+        I := I + 1
+    end
+end

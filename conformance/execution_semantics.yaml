@@ -1,0 +1,47 @@
+- id: exec_factorial_5
+  command: run
+  source: |
+    begin
+      RES := 1;
+      while N > 1 do
+      begin
+        RES := RES * N;
+        N := N - 1
+      end
+    end
+  vars:
+    N: 5
+  expected_exit_code: 0
+  expected_state:
+    RES: 120
+    N: 1
+
+- id: exec_gcd_48_18
+  command: run
+  source: |
+    while A != B do
+      if A > B then
+        A := A - B
+      else
+        B := B - A
+  vars:
+    A: 48
+    B: 18
+  expected_exit_code: 0
+  expected_state:
+    A: 6
+    B: 6
+
+- id: exec_uninitialized_var_defaults_to_zero
+  command: run
+  source: "Y := X + 10"
+  expected_exit_code: 0
+  expected_state:
+    Y: 10
+
+- id: exec_infinite_loop_guard
+  command: run
+  source: "while 1 = 1 do skip"
+  max_steps: 25
+  expected_exit_code: 2
+  expected_error_code: R001

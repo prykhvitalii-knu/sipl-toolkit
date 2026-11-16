@@ -186,6 +186,4 @@ def parse_sipl(source: str) -> Stmt:
             )
         ) from exc
     except LarkError as exc:
-        raise SiplSyntaxError(
-            Diagnostic(code="E003", message=f"Parse error: {exc}")
-        ) from exc
+        raise SiplSyntaxError(Diagnostic(code="E003", message=f"Parse error: {exc}")) from exc

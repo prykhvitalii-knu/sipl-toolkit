@@ -1,0 +1,27 @@
+- id: ast_assign_root
+  command: parse
+  source: "X := 10 + 2 * 5"
+  expected_exit_code: 0
+  expected_ast_kind: assign
+
+- id: ast_while_block
+  command: parse
+  source: |
+    begin
+      X := 5;
+      while X > 0 do X := X - 1
+    end
+  expected_exit_code: 0
+  expected_ast_kind: block
+
+- id: syntax_error_missing_assign_colon
+  command: parse
+  source: "X = 100"
+  expected_exit_code: 1
+  expected_error_code: E002
+
+- id: syntax_error_incomplete_if
+  command: parse
+  source: "if X > 0 then skip"
+  expected_exit_code: 1
+  expected_error_code: E002

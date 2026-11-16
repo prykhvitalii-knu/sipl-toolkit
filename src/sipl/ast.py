@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import BaseModel, Field
 
@@ -25,6 +25,7 @@ class ASTNode(BaseModel):
 
 # --- Арифметичні вирази ---
 
+
 class IntLiteral(ASTNode):
     kind: Literal["int"] = "int"
     value: int
@@ -47,10 +48,11 @@ class BinArithOp(ASTNode):
     right: AExpr
 
 
-AExpr = Union[IntLiteral, VarExpr, NegOp, BinArithOp]
+AExpr = IntLiteral | VarExpr | NegOp | BinArithOp
 
 
 # --- Булеві вирази ---
+
 
 class CompOp(ASTNode):
     kind: Literal["comp_op"] = "comp_op"
@@ -71,10 +73,11 @@ class BinBoolOp(ASTNode):
     right: BExpr
 
 
-BExpr = Union[CompOp, NotOp, BinBoolOp]
+BExpr = CompOp | NotOp | BinBoolOp
 
 
 # --- Оператори ---
+
 
 class SkipStmt(ASTNode):
     kind: Literal["skip"] = "skip"
@@ -109,4 +112,4 @@ class WhileStmt(ASTNode):
     body: Stmt
 
 
-Stmt = Union[SkipStmt, AssignStmt, SeqStmt, BlockStmt, IfStmt, WhileStmt]
+Stmt = SkipStmt | AssignStmt | SeqStmt | BlockStmt | IfStmt | WhileStmt
