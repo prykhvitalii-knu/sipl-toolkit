@@ -27,3 +27,8 @@
  `REL-03`  Пакування та публікація Python-пакета в PyPI  0.5 
 
  `REL-04`  Пакування та публікація `.vsix` артефакту VS Code extension  0.5 
+
+### Встановлення з PyPI або локально
+```bash
+pip install sipl-toolkit або uv sync
+```
