@@ -2,7 +2,7 @@
   "name": "vscode-sipl",
   "displayName": "SIPL Language Support",
   "description": "Syntax highlighting, snippets, check and run integration for SIPL",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "publisher": "sipl-tools",
   "license": "MIT",
   "engines": {

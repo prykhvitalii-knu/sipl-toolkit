@@ -58,11 +58,13 @@ jobs:
           name: release-assets
           path: dist/
 
+      - name: Remove non-PyPI artifacts from dist
+        run: rm -f dist/*.vsix
+
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           packages-dir: dist/
-          pattern: "*.{whl,tar.gz}"
 
   github-release:
     name: Create GitHub Release
