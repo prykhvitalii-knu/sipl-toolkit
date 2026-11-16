@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "sipl-toolkit"
+name = "sipl-toolkit-vit"
 version = "0.1.0"
 description = "SIPL Language Toolkit: grammar, typed AST, interpreter, CLI, and conformance suite"
 readme = "README.md"
