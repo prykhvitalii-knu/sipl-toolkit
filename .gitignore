@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+dist/
+build/
+*.egg-info/
+vscode-sipl/node_modules/
+vscode-sipl/out/
+*.vsix
