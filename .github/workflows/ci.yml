@@ -40,7 +40,7 @@ jobs:
         run: |
           uv venv /tmp/clean-env
           uv pip install --python /tmp/clean-env/bin/python dist/*.whl pytest pyyaml
-          SIPL_CMD="/tmp/clean-env/bin/sipl" /tmp/clean-env/bin/pytest tests/test_conformance.py --no-cov
+          SIPL_CMD="/tmp/clean-env/bin/sipl" /tmp/clean-env/bin/pytest -o addopts="" tests/test_conformance.py
 
       - name: Upload Python dist artifacts
         uses: actions/upload-artifact@v4
