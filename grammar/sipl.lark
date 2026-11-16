@@ -1,0 +1,43 @@
+?start: stmt
+
+?stmt: seq_stmt
+
+?seq_stmt: single_stmt (";" single_stmt)*
+
+?single_stmt: "skip"                                      -> skip_stmt
+            | IDENT ":=" aexpr                            -> assign_stmt
+            | "begin" stmt "end"                          -> block_stmt
+            | "if" bexpr "then" single_stmt "else" single_stmt -> if_stmt
+            | "while" bexpr "do" single_stmt              -> while_stmt
+
+?bexpr: or_expr
+
+?or_expr: and_expr ("or" and_expr)*
+?and_expr: not_expr ("and" not_expr)*
+?not_expr: "not" not_expr                                 -> not_op
+         | comparison
+
+?comparison: aexpr COMP_OP aexpr                          -> comp_op
+           | "(" bexpr ")"
+
+?aexpr: term
+      | aexpr "+" term                                    -> add_op
+      | aexpr "-" term                                    -> sub_op
+
+?term: factor
+     | term "*" factor                                    -> mul_op
+
+?factor: NUMBER                                           -> int_literal
+       | IDENT                                            -> var_expr
+       | "-" factor                                       -> neg_op
+       | "(" aexpr ")"
+
+COMP_OP: "=" | "!=" | "<=" | ">=" | "<" | ">"
+IDENT: /[a-zA-Z_][a-zA-Z0-9_]*/
+NUMBER: /[0-9]+/
+
+COMMENT: /\/\/[^\n]*/ | /#[^\n]*/
+
+%import common.WS
+%ignore WS
+%ignore COMMENT
