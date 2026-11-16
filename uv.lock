@@ -767,7 +767,7 @@ wheels = [
 ]
 
 [[package]]
-name = "sipl-toolkit"
+name = "sipl-toolkit-vit"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
