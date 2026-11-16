@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "SIPL",
+  "scopeName": "source.sipl",
+  "patterns": [
+    {
+      "name": "comment.line.double-slash.sipl",
+      "match": "(//|#).*$"
+    },
+    {
+      "name": "keyword.control.sipl",
+      "match": "\\b(begin|end|if|then|else|while|do|skip)\\b"
+    },
+    {
+      "name": "keyword.operator.logical.sipl",
+      "match": "\\b(and|or|not)\\b"
+    },
+    {
+      "name": "keyword.operator.assignment.sipl",
+      "match": ":="
+    },
+    {
+      "name": "keyword.operator.comparison.sipl",
+      "match": "(!=|<=|>=|=|<|>)"
+    },
+    {
+      "name": "keyword.operator.arithmetic.sipl",
+      "match": "(\\+|-|\\*)"
+    },
+    {
+      "name": "constant.numeric.integer.sipl",
+      "match": "\\b[0-9]+\\b"
+    },
+    {
+      "name": "variable.other.sipl",
+      "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
+    }
+  ]
+}

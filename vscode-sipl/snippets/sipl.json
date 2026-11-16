@@ -1,0 +1,31 @@
+{
+  "Begin End Block": {
+    "prefix": "begin",
+    "body": [
+      "begin",
+      "\t$1",
+      "end"
+    ],
+    "description": "SIPL compound block"
+  },
+  "While Loop": {
+    "prefix": "while",
+    "body": [
+      "while ${1:condition} do",
+      "begin",
+      "\t$2",
+      "end"
+    ],
+    "description": "SIPL while loop"
+  },
+  "If Then Else": {
+    "prefix": "if",
+    "body": [
+      "if ${1:condition} then",
+      "\t${2:skip}",
+      "else",
+      "\t${3:skip}"
+    ],
+    "description": "SIPL conditional statement"
+  }
+}

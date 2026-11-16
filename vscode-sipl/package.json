@@ -1,0 +1,91 @@
+{
+  "name": "vscode-sipl",
+  "displayName": "SIPL Language Support",
+  "description": "Syntax highlighting, snippets, check and run integration for SIPL",
+  "version": "0.1.0",
+  "publisher": "sipl-tools",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters"
+  ],
+  "activationEvents": [
+    "onLanguage:sipl"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "sipl",
+        "aliases": [
+          "SIPL",
+          "sipl"
+        ],
+        "extensions": [
+          ".sipl"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "sipl",
+        "scopeName": "source.sipl",
+        "path": "./syntaxes/sipl.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "sipl",
+        "path": "./snippets/sipl.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "sipl.check",
+        "title": "SIPL: Check Syntax"
+      },
+      {
+        "command": "sipl.run",
+        "title": "SIPL: Run Program"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "when": "editorLangId == sipl",
+          "command": "sipl.check",
+          "group": "navigation"
+        },
+        {
+          "when": "editorLangId == sipl",
+          "command": "sipl.run",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "SIPL",
+      "properties": {
+        "sipl.executablePath": {
+          "type": "string",
+          "default": "sipl",
+          "description": "Path or command to invoke the SIPL CLI executable (e.g., 'sipl' or 'uv run sipl')"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.1.0",
+    "typescript": "^5.5.0"
+  }
+}
